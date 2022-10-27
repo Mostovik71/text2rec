@@ -15,7 +15,6 @@ querystr = 'стивен спилберг боевик 1998 история'
 final = pd.DataFrame([])
 
 for i, k in zip(df['all'], df['Title']):
-    if fuzz.token_set_ratio(querystr, i) > 70:
         final = final.append(pd.DataFrame([querystr, i, fuzz.token_set_ratio(querystr, i), k]).T)
 final.columns = ['Query', 'Data', 'Similarity', 'Title']
 final_df = final.sort_values('Similarity', ascending=False)
