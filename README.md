@@ -38,5 +38,5 @@ pip install -r requirements.txt
 ![image](https://user-images.githubusercontent.com/56130198/199210072-516ab705-9694-4502-ad99-f0a3e3b311b2.png)
 ## Пример работы первого сценария (FuzzyWuzzy)
 Ниже приведен пример работы первого сценария, а конкретно реализации неявного сравнения строк.
-![image](https://user-images.githubusercontent.com/56130198/199210072-516ab705-9694-4502-ad99-f0a3e3b311b2.png)
+![image](https://user-images.githubusercontent.com/56130198/199277274-392f40fb-579c-4f76-bc5e-d6481c9ef24c.png)
 
