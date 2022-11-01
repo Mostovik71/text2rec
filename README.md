@@ -32,6 +32,6 @@ pip install -r requirements.txt
 ```
 ## Лицензия
 [MIT](https://choosealicense.com/licenses/mit/)
-## Пример работы бейзлайна
+## Пример работы бейзлайна (BERT)
 ![image](https://user-images.githubusercontent.com/56130198/199210072-516ab705-9694-4502-ad99-f0a3e3b311b2.png)
 
