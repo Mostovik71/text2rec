@@ -1,2 +1,2 @@
 gradio == 3.7
-fuzzywuzzy
+fuzzywuzzy == 0.18.0
