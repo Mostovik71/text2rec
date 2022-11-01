@@ -1,2 +1,2 @@
-gradio
+gradio == 3.7
 fuzzywuzzy
