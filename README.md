@@ -17,7 +17,7 @@
 ├─ data                         <- Данные фильмов и запросов пользователей для валидации
 │  ├─ merging.py
 │  ├─ text_queries_yandex.csv
-│  ├─ recstobert.csv
+│  ├─ recsforbert.csv
 │  ├─ test_queries.csv
 │  └─ top250.csv
 ├─ demos                        <- Демо-версии графического интерфейса
