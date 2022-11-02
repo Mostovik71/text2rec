@@ -75,7 +75,7 @@ def main():
         genre_handler, actor_handler, country_handler
     ])
 
-    df = pd.read_csv("top250.csv")
+    df = pd.read_csv("data/top250.csv")
     df = pipeline(query, df)
     print(df)
 
