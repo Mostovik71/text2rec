@@ -14,12 +14,6 @@
 │  │  ├─ keywords_search.py
 │  │  └─ simple_search.py
 │  └─ second_case               <- Поиск с использованием DNN (bert, sentence-bert, etc.)
-├─ data                         <- Данные фильмов и запросов пользователей для валидации
-│  ├─ merging.py
-│  ├─ text_queries_yandex.csv
-│  ├─ recsforbert.csv
-│  ├─ test_queries.csv
-│  └─ top250.csv
 ├─ demos                        <- Демо-версии графического интерфейса
 │  └─ demo_text2rec.ipynb
 ├─ .gitignore
@@ -46,16 +40,16 @@ pip install -r requirements.txt
 Ниже приведен пример работы первого сценария, а конкретно реализации нечеткого сравнения строк.
 ![image](https://user-images.githubusercontent.com/56130198/199277274-392f40fb-579c-4f76-bc5e-d6481c9ef24c.png)
 
-## Сравнение моделей:
+## Сравнение моделей
 
 <img src="imgs/comparison.png">
 Сравнение происходило на запросах первого типа
 
-## Необходимое оборудование:
+## Необходимое оборудование
 
 16 gb RAM, GPU Tesla k80
 
-## Масштабирование: 
+## Масштабирование
 
 Возможно с помощью предварительного расчета эмбеддингов фильмов и использованием FAISS или подобной технологии
 
