@@ -1,2 +1,7 @@
-gradio == 3.7
-fuzzywuzzy == 0.18.0
+tqdm
+torch
+pandas
+transformers
+gradio==3.7
+fuzzywuzzy==0.18.0
+googletrans==4.0.0rc1

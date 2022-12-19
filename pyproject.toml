@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "text2rec"
+version = "0.0.1"
+description = ""
+authors = [
+    "Vladislav Mostovik <mostovik71@gmail.com>",
+    "Yuri Kim <yura.kim-KIM@yandex.ru>", 
+    "Vsevolod Vlasov <sesevasa64@gmail.com>"
+]
+readme = "README.md"
