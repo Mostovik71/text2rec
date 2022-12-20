@@ -29,9 +29,9 @@ def translate_reviews(reviews: pd.DataFrame, column_name) -> pd.DataFrame:
             translated_reviews.append(text_en)
         time.sleep(max(0.4 - timer.elapsed, 0))
     if i + 1 != len(reviews_text):
-        old = reviews_text.to_list()[i:]
-        translated[column_name] = translated_reviews + old
-        return translated
+        partial_translated = translated.iloc[:i].copy(deep=True)
+        partial_translated[column_name] = translated_reviews
+        return partial_translated
     translated[column_name] = translated_reviews
     return translated 
 
