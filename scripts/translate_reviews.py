@@ -16,18 +16,26 @@ class Timer:
 
 def translate_reviews(reviews: pd.DataFrame, column_name) -> pd.DataFrame:
     translated_reviews = []
-    translator = Translator()
+    service_urls = ['translate.google.com', 'translate.google.ru']
+    translator = Translator(service_urls=service_urls, raise_exception=True)
     translated = reviews.copy(deep=True)
     reviews_text = reviews[column_name]
-    for i, text_ru in enumerate(tqdm(reviews_text)):
-        with Timer() as timer:
-            try:
-                text_en = translator.translate(text_ru[:5000], src="ru", dest="en").text
-            except:
-                traceback.print_exc()
-                break
-            translated_reviews.append(text_en)
-        time.sleep(max(0.4 - timer.elapsed, 0))
+    try:
+        for i, text_ru in enumerate(tqdm(reviews_text)):
+            with Timer() as timer:
+                try:
+                    text_en = translator.translate(text_ru[:5000], src="ru", dest="en").text
+                except KeyboardInterrupt:
+                    raise
+                except:
+                    # traceback.print_exc()
+                    time.sleep(60)
+                    translator = Translator(service_urls=service_urls, raise_exception=True)
+                    text_en = translator.translate(text_ru[:5000], src="ru", dest="en").text
+                translated_reviews.append(text_en)
+            time.sleep(max(0.5 - timer.elapsed, 0))
+    except:
+        pass
     if i + 1 != len(reviews_text):
         partial_translated = translated.iloc[:i].copy(deep=True)
         partial_translated[column_name] = translated_reviews
@@ -39,15 +47,22 @@ def translate_reviews(reviews: pd.DataFrame, column_name) -> pd.DataFrame:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("filename")
-    parser.add_argument("column_name", nargs="?", default="description")
+    parser.add_argument("-c", "--column_name", nargs="?", default="description")
+    parser.add_argument("-s", "--start_index", nargs="?", default=0)
+    parser.add_argument("-e", "--end_index", nargs="?", default=-1)
     args = parser.parse_args()
 
     filename = args.filename
+    df = pd.read_csv(filename)
     column_name = args.column_name
-    reviews = pd.read_csv(filename)
+    start_index = int(args.start_index)
+    end_index = int(args.end_index)
+    end_index = len(df) if end_index == -1 else end_index
+    reviews = df.iloc[start_index:end_index].copy(deep=True)
+    
+    print(f"Starting translating reviews from {start_index} to {end_index}")
     translated = translate_reviews(reviews, column_name)
-
-    translated.to_csv(f"{filename[:-4]}_translated.csv", index=False)
+    translated.to_csv(f"{filename[:-4]}_translated_{start_index}_{start_index+len(translated)}.csv", index=False)
 
 if __name__ == "__main__":
     main()
